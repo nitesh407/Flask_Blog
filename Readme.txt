@@ -113,3 +113,4 @@
 	User('Nitesh', 'demo@gmail.com', 'default.jpg')
 
  
+- Now we gonna convert our application into packages rather than the models
