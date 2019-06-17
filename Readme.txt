@@ -114,3 +114,25 @@
 
  
 - Now we gonna convert our application into packages rather than the models
+
+- We will ne hashing the passwords as in future if someone gets access to our darabase then they might not be able to login with those hashed passwords.
+	- pip3 install flask-bcrypt
+	oprn up the python3 interpreter and write, 
+
+		>>> from flask_bcrypt import Bcrypt
+		>>> bcrypt = Bcrypt()
+		>>> bcrypt.generate_password_hash('testing')
+		b'$2b$12$Z5YZbDH/4FbAEBmIghsJA.v6YywV6CCQrln/97yKW0J9I4n1PW42a'
+		>>> bcrypt.generate_password_hash('testing').decode('utf-8')
+		'$2b$12$.EF85.scViScLWOYS/R/7u8rgzdBJrp4RagvK3N6IWJMcmxb7h.t6'
+		>>> bcrypt.generate_password_hash('testing').decode('utf-8')
+		'$2b$12$57.WgZ.HgE0EGl1.QPOy8uJ2n/1rNNlvoa74wosM2vjqK9YfVh8pu'
+		>>> hashed_pw = bcrypt.generate_password_hash('testing').decode('utf-8')
+		>>> bcrypt.check_password_hash(hashed_pw, 'oassword')
+		False
+		>>> bcrypt.check_password_hash(hashed_pw, 'testing')
+		True
+
+- Now we gonna use another extension for login
+
+	pip install flask-login
