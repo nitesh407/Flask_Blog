@@ -152,3 +152,27 @@
 - we can go to the page we want to go by passing a parameter to the url
 	?page=2
 
+
+	---------------------------------
+- We now gonna look at the password reset and email activity. To do this we gonna use the package itsdangerous(installed with flask)
+
+-	from itsdangerous impor TimedJSONWebSignatureSerializer as Serializer
+
+now we gonna ues this serializer and gonna pass the secret key and the expression time:-
+	s = Serializer('secret', 30)
+
+ and now to generate a token we can use this method and we gona pass a payload that is the user_id:-
+ 	
+ 	>>> token = s.dumps('{user_id: 1}').decode('utf-8')
+	>>> token
+	'eyJhbGciOiJIUzUxMiIsImlhdCI6MTU2MDk2ODEzNSwiZXhwIjoxNTYwOTY4MTY1fQ.Int1c2VyX2lkOiAxfSI.6D-Bp039bn1u89Xx2zieXiWRwESSVXrCBoob3r4Qz1o27URu-zsOVz6dDREhueSS2Xd0EhB9EhwWN0R5Q5yseg'
+	>>> s.loads(token)
+	'{user_id: 1}'
+
+if we do apply the same method again then we can see that the signature is expired, this is because the expression time is expired
+
+---------------------------------------
+- Now we gonna learn how to send the email 
+	package name :- flask-mail
+
+	pip3 install flask-mail
