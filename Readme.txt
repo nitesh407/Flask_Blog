@@ -136,3 +136,19 @@
 - Now we gonna use another extension for login
 
 	pip install flask-login
+
+------------------------------------------------------------------
+- Now we are going for pagination as there can be number of user's post and loading them all at once can be time consuming. So, we gonna paginate our website with the flask-SQLAlchemy method , paginate().
+
+	posts = Post.query.paginate()
+	posts
+	<flask_sqlalchemy.Pagination object at 0x7f51d278b860>
+	
+	dir(posts)
+	['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'has_next', 'has_prev', 'items', 'iter_pages', 'next', 'next_num', 'page', 'pages', 'per_page', 'prev', 'prev_num', 'query', 'total']
+
+
+
+- we can go to the page we want to go by passing a parameter to the url
+	?page=2
+
